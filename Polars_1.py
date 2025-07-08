@@ -35,7 +35,7 @@ custom_schema = {'date_time': pl.Utf8,
 
 df = pl.read_csv("course_file.csv", 
                  has_header=True,
-                 dtypes=custom_schema)
+                 schema_overrides=custom_schema)
 print(df.head(3))                            # Show 1st 3 lines - userid now string
 
 print("----------------------------------------------")
@@ -115,3 +115,13 @@ print(df.select(
             .alias("Minor_Countries")
      ).head(5)
 )
+
+# Filtering:
+fltered = df.select(
+            pl.col("platform"),
+            pl.col("dlbytes"),
+        ).filter(
+            pl.col("dlbytes") > 100000
+        )
+
+print(fltered.head(5))
