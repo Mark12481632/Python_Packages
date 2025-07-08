@@ -115,13 +115,3 @@ print(df.select(
             .alias("Minor_Countries")
      ).head(5)
 )
-
-# Filtering:
-fltered = df.select(
-            pl.col("platform"),
-            pl.col("dlbytes"),
-        ).filter(
-            pl.col("dlbytes") > 100000
-        )
-
-print(fltered.head(5))

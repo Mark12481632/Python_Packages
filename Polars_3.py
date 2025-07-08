@@ -87,7 +87,6 @@ print(
 )
 
 
-
 # Filtering:
 fltered = df.select(
             pl.col("platform"),
